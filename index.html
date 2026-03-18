@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sandeep Raj | Senior RPA Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg: #060a0d;
+    --surface: #0c1117;
+    --surface2: #111820;
+    --border: #1b2730;
+    --accent: #00e5ff;
+    --accent2: #ff4d6d;
+    --accent3: #7b5ea7;
+    --text: #b8ccd8;
+    --text-dim: #4e6575;
+    --text-bright: #e4f2ff;
+    --green: #00e676;
+    --orange: #ffab40;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0; opacity: 0.35;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 52px;
+    background: rgba(6,10,13,0.88);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 800;
+    color: var(--text-bright); letter-spacing: 1px;
+  }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    color: var(--text-dim); text-decoration: none;
+    font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-badge {
+    background: rgba(0,229,255,0.1); border: 1px solid rgba(0,229,255,0.3);
+    color: var(--accent); font-size: 10px; padding: 4px 12px;
+    letter-spacing: 1px; text-transform: uppercase;
+  }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 120px 52px 80px;
+    position: relative; overflow: hidden;
+  }
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(0,229,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,229,255,0.03) 1px, transparent 1px);
+    background-size: 64px 64px;
+    animation: gridMove 18s linear infinite;
+  }
+  @keyframes gridMove { 0% { background-position: 0 0; } 100% { background-position: 64px 64px; } }
+
+  .hero-glow {
+    position: absolute; width: 800px; height: 800px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,229,255,0.06) 0%, transparent 65%);
+    top: 40%; right: -100px; transform: translateY(-50%);
+    animation: pulse 5s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:0.5; transform:translateY(-50%) scale(1);} 50%{opacity:1; transform:translateY(-50%) scale(1.15);} }
+
+  .hero-content { position: relative; z-index: 1; max-width: 820px; }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(0,230,118,0.08); border: 1px solid rgba(0,230,118,0.25);
+    color: var(--green); font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+    padding: 6px 16px; margin-bottom: 28px;
+    animation: fadeUp 0.8s ease both;
+  }
+  .hero-tag::before { content: '●'; font-size: 7px; animation: blink 1.5s infinite; }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
+
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(48px, 7.5vw, 90px);
+    font-weight: 800; line-height: 0.95;
+    color: var(--text-bright); letter-spacing: -2px;
+    animation: fadeUp 0.8s ease 0.1s both;
+  }
+  h1 .accent { color: var(--accent); display: block; }
+  h1 .dim { color: var(--text-dim); }
+
+  .hero-title-tag {
+    margin-top: 20px;
+    font-family: 'DM Mono', monospace; font-size: 13px;
+    color: var(--text-dim); letter-spacing: 2px; text-transform: uppercase;
+    animation: fadeUp 0.8s ease 0.15s both;
+  }
+  .hero-title-tag span { color: var(--orange); }
+
+  .hero-sub {
+    margin-top: 24px; font-size: 15px; color: var(--text);
+    max-width: 580px; line-height: 1.9;
+    animation: fadeUp 0.8s ease 0.2s both;
+  }
+  .hero-sub strong { color: var(--accent); font-weight: 400; }
+
+  .hero-ctas {
+    margin-top: 40px; display: flex; gap: 14px; flex-wrap: wrap;
+    animation: fadeUp 0.8s ease 0.3s both;
+  }
+  .btn-primary {
+    background: var(--accent); color: #000;
+    font-family: 'DM Mono', monospace; font-size: 11px;
+    font-weight: 500; letter-spacing: 2px; text-transform: uppercase;
+    padding: 13px 30px; border: none; cursor: pointer;
+    text-decoration: none; display: inline-block;
+    transition: all 0.3s;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  }
+  .btn-primary:hover { background: #fff; transform: translateY(-2px); }
+  .btn-ghost {
+    background: transparent; color: var(--accent);
+    font-family: 'DM Mono', monospace; font-size: 11px;
+    letter-spacing: 2px; text-transform: uppercase;
+    padding: 12px 30px; border: 1px solid var(--accent);
+    cursor: pointer; text-decoration: none; display: inline-block;
+    transition: all 0.3s;
+  }
+  .btn-ghost:hover { background: rgba(0,229,255,0.08); transform: translateY(-2px); }
+
+  .hero-stats {
+    margin-top: 60px; display: flex; gap: 48px; flex-wrap: wrap;
+    animation: fadeUp 0.8s ease 0.4s both;
+  }
+  .stat { border-left: 2px solid var(--accent); padding-left: 18px; }
+  .stat-num { font-family: 'Syne', sans-serif; font-size: 30px; font-weight: 800; color: var(--text-bright); }
+  .stat-num span { color: var(--accent); }
+  .stat-label { font-size: 10px; color: var(--text-dim); letter-spacing: 1.5px; text-transform: uppercase; }
+
+  @keyframes fadeUp { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
+
+  /* SECTIONS */
+  section { padding: 96px 52px; position: relative; z-index: 1; }
+  .section-label {
+    font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 10px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .section-label::after { content:''; flex: 0 0 36px; height:1px; background:var(--accent); }
+  h2 {
+    font-family: 'Syne', sans-serif; font-size: clamp(28px, 4.5vw, 48px);
+    font-weight: 800; color: var(--text-bright); line-height: 1.1;
+    letter-spacing: -1px; margin-bottom: 14px;
+  }
+  .section-desc { color: var(--text-dim); max-width: 560px; margin-bottom: 52px; line-height: 1.9; }
+
+  /* ABOUT */
+  #about { background: var(--surface); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+  .about-inner { max-width: 1100px; margin: 0 auto; }
+  .about-grid { display: grid; grid-template-columns: 320px 1fr; gap: 80px; align-items: start; }
+
+  .about-sidebar { }
+  .avatar-box {
+    width: 100%; aspect-ratio: 1;
+    background: var(--surface2); border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 72px; position: relative; overflow: hidden; margin-bottom: 24px;
+  }
+  .avatar-box::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(0,229,255,0.1) 0%, rgba(123,94,167,0.05) 100%);
+  }
+  .avatar-initials {
+    font-family: 'Syne', sans-serif; font-size: 56px; font-weight: 800;
+    color: var(--accent); position: relative; z-index: 1; letter-spacing: -2px;
+  }
+  .corner { position:absolute; width:16px; height:16px; border-color:var(--accent); border-style:solid; }
+  .corner.tl{top:-1px;left:-1px;border-width:2px 0 0 2px}
+  .corner.tr{top:-1px;right:-1px;border-width:2px 2px 0 0}
+  .corner.bl{bottom:-1px;left:-1px;border-width:0 0 2px 2px}
+  .corner.br{bottom:-1px;right:-1px;border-width:0 2px 2px 0}
+
+  .sidebar-info { display: flex; flex-direction: column; gap: 10px; }
+  .info-row {
+    display: flex; align-items: flex-start; gap: 10px;
+    background: var(--bg); border: 1px solid var(--border);
+    padding: 10px 14px; font-size: 12px;
+  }
+  .info-row .info-label { color: var(--text-dim); min-width: 60px; }
+  .info-row .info-val { color: var(--text-bright); }
+
+  .about-text { padding-top: 4px; }
+  .about-text h2 { margin-bottom: 20px; }
+  .about-body { color: var(--text); line-height: 1.95; margin-bottom: 20px; font-size: 13px; }
+
+  .employment-timeline { margin-top: 32px; }
+  .timeline-title { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-dim); margin-bottom: 16px; }
+  .timeline-item {
+    display: flex; gap: 16px; align-items: flex-start;
+    padding: 14px 0; border-bottom: 1px solid var(--border);
+  }
+  .timeline-item:last-child { border-bottom: none; }
+  .tl-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--accent); flex-shrink: 0; margin-top: 5px;
+  }
+  .tl-dot.dim { background: var(--text-dim); }
+  .tl-date { font-size: 11px; color: var(--accent); min-width: 76px; }
+  .tl-role { font-size: 12px; color: var(--text-bright); font-weight: 500; }
+  .tl-company { font-size: 11px; color: var(--text-dim); margin-top: 2px; }
+
+  /* SKILLS */
+  #skills { }
+  .skills-inner { max-width: 1100px; margin: 0 auto; }
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2px; }
+  .skill-card {
+    background: var(--surface); border: 1px solid var(--border);
+    padding: 28px 24px; position: relative; overflow: hidden; transition: all 0.3s;
+  }
+  .skill-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--accent3));
+    transform: scaleX(0); transform-origin: left; transition: transform 0.35s;
+  }
+  .skill-card:hover::before { transform: scaleX(1); }
+  .skill-card:hover { background: var(--surface2); }
+  .skill-icon { font-size: 24px; margin-bottom: 14px; }
+  .skill-name { font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 700; color: var(--text-bright); margin-bottom: 8px; }
+  .skill-items { font-size: 11px; color: var(--text-dim); line-height: 1.9; }
+  .skill-items span { color: var(--text); }
+
+  /* PROJECTS */
+  #projects { background: var(--surface); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+  .projects-inner { max-width: 1100px; margin: 0 auto; }
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
+  .project-card {
+    background: var(--bg); border: 1px solid var(--border);
+    padding: 28px; position: relative; overflow: hidden; transition: all 0.3s;
+  }
+  .project-card:hover { border-color: rgba(0,229,255,0.35); transform: translateY(-4px); }
+  .project-card::after {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, var(--accent), var(--accent3));
+    transform: scaleX(0); transform-origin: left; transition: transform 0.4s;
+  }
+  .project-card:hover::after { transform: scaleX(1); }
+  .project-num {
+    font-family: 'Syne', sans-serif; font-size: 40px; font-weight: 800;
+    color: var(--border); position: absolute; top: 16px; right: 20px;
+  }
+  .project-domain {
+    display: inline-block;
+    background: rgba(255,77,109,0.08); border: 1px solid rgba(255,77,109,0.25);
+    color: var(--accent2); font-size: 9px; letter-spacing: 1.5px;
+    text-transform: uppercase; padding: 3px 10px; margin-bottom: 14px;
+  }
+  .project-title { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700; color: var(--text-bright); margin-bottom: 10px; line-height: 1.3; }
+  .project-desc { font-size: 12px; color: var(--text-dim); line-height: 1.85; margin-bottom: 20px; }
+  .project-stack { display: flex; flex-wrap: wrap; gap: 6px; }
+  .stack-tag {
+    background: rgba(123,94,167,0.08); border: 1px solid rgba(123,94,167,0.25);
+    color: #b39ddb; font-size: 10px; letter-spacing: 0.5px;
+    padding: 3px 9px; text-transform: uppercase;
+  }
+
+  /* CERTIFICATIONS */
+  #certifications { }
+  .certs-inner { max-width: 1100px; margin: 0 auto; }
+  .certs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+  .cert-card {
+    background: var(--surface); border: 1px solid var(--border);
+    padding: 24px 20px; display: flex; gap: 18px; align-items: flex-start;
+    transition: all 0.3s;
+  }
+  .cert-card:hover { border-color: rgba(0,229,255,0.3); background: var(--surface2); }
+  .cert-icon {
+    width: 44px; height: 44px; flex-shrink: 0;
+    background: rgba(0,229,255,0.07); border: 1px solid rgba(0,229,255,0.2);
+    display: flex; align-items: center; justify-content: center; font-size: 20px;
+  }
+  .cert-name { font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700; color: var(--text-bright); margin-bottom: 5px; line-height: 1.3; }
+  .cert-issuer { font-size: 10px; color: var(--accent); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px; }
+  .cert-badge {
+    display: inline-block; margin-top: 8px;
+    background: rgba(0,230,118,0.07); border: 1px solid rgba(0,230,118,0.22);
+    color: var(--green); font-size: 9px; letter-spacing: 1px; text-transform: uppercase; padding: 3px 9px;
+  }
+
+  /* CONTACT */
+  #contact { background: var(--surface); border-top:1px solid var(--border); }
+  .contact-inner { max-width: 960px; margin: 0 auto; }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  .contact-info p { color: var(--text-dim); line-height: 1.95; margin-bottom: 32px; font-size: 13px; }
+  .contact-links { display: flex; flex-direction: column; gap: 12px; }
+  .contact-link {
+    display: flex; align-items: center; gap: 14px;
+    color: var(--text); text-decoration: none; font-size: 12px;
+    padding: 12px 16px; background: var(--bg); border: 1px solid var(--border);
+    transition: all 0.3s;
+  }
+  .contact-link:hover { border-color: var(--accent); color: var(--accent); }
+  .link-icon { width: 18px; text-align: center; font-size: 14px; }
+  .form-group { margin-bottom: 18px; }
+  .form-group label { display: block; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-dim); margin-bottom: 8px; }
+  .form-group input, .form-group textarea {
+    width: 100%; background: var(--bg); border: 1px solid var(--border);
+    color: var(--text); font-family: 'DM Mono', monospace; font-size: 12px;
+    padding: 11px 14px; outline: none; transition: border-color 0.3s;
+  }
+  .form-group input:focus, .form-group textarea:focus { border-color: var(--accent); }
+  .form-group textarea { resize: vertical; min-height: 110px; }
+  .form-submit {
+    width: 100%; background: var(--accent); color: #000;
+    font-family: 'DM Mono', monospace; font-size: 11px;
+    font-weight: 500; letter-spacing: 2px; text-transform: uppercase;
+    padding: 15px; border: none; cursor: pointer; transition: all 0.3s; margin-top: 6px;
+  }
+  .form-submit:hover { background: #fff; }
+
+  /* FOOTER */
+  footer {
+    padding: 28px 52px; border-top: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
+  }
+  .footer-copy { font-size: 11px; color: var(--text-dim); }
+  .footer-copy span { color: var(--accent); }
+  .footer-note { font-size: 10px; color: var(--text-dim); letter-spacing: 1px; }
+
+  /* REVEAL */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    section { padding: 72px 24px; }
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    footer { padding: 20px 24px; }
+    #hero { padding: 100px 24px 60px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Sandeep <span>Raj</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#certifications">Certs</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-badge">Open to Work</div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-tag">6 Years of Experience</div>
+    <h1>
+      <span class="dim">Sandeep</span>
+      <span class="accent">Raj</span>
+    </h1>
+    <div class="hero-title-tag">Senior <span>Automation Engineer</span> · UiPath Expert</div>
+    <p class="hero-sub">
+      Transforming complex business processes into intelligent, scalable automation. Specialized in <strong>UiPath</strong>, <strong>Document Understanding</strong>, and <strong>AI-powered bots</strong> across banking, IT, and insurance domains.
+    </p>
+    <div class="hero-ctas">
+      <a href="#projects" class="btn-primary">View Projects</a>
+      <a href="#contact" class="btn-ghost">Hire Me</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">6<span>yr</span></div>
+        <div class="stat-label">Experience</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">5<span>yr</span></div>
+        <div class="stat-label">RPA Focus</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">10<span>+</span></div>
+        <div class="stat-label">Projects Led</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">3<span>x</span></div>
+        <div class="stat-label">UiPath Certified</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-inner">
+    <div class="about-grid">
+      <!-- Sidebar -->
+      <div class="about-sidebar reveal">
+        <div class="avatar-box">
+          <div class="avatar-initials">SR</div>
+          <div class="corner tl"></div>
+          <div class="corner tr"></div>
+          <div class="corner bl"></div>
+          <div class="corner br"></div>
+        </div>
+        <div class="sidebar-info">
+          <div class="info-row"><span class="info-label">Role</span><span class="info-val">Senior Automation Engineer</span></div>
+          <div class="info-row"><span class="info-label">Company</span><span class="info-val">Novigo Solutions</span></div>
+          <div class="info-row"><span class="info-label">Domain</span><span class="info-val">Banking · IT · Insurance</span></div>
+          <div class="info-row"><span class="info-label">Degree</span><span class="info-val">B.Tech — RIET</span></div>
+          <div class="info-row"><span class="info-label">Location</span><span class="info-val">India</span></div>
+        </div>
+      </div>
+
+      <!-- Text -->
+      <div class="about-text reveal">
+        <div class="section-label">// About Me</div>
+        <h2>Senior Automation Engineer building intelligent bots</h2>
+        <p class="about-body">
+          Senior Automation Engineer with 6 years of overall industry experience, including 5 years specializing in Process Automation using RPA tools — particularly UiPath. I have worked across diverse domains such as banking, IT, and insurance, with deep expertise in the UiPath lifecycle and its full product suite.
+        </p>
+        <p class="about-body">
+          I've led multiple teams as a Technical Lead and Solution Architect, ensuring timely and successful project delivery. My contributions include designing effective test cases, PDDs, and SDDs to optimize process efficiency. I'm passionate about leveraging cutting-edge technologies like Document Understanding, AI Center, and Gen AI to help businesses thrive.
+        </p>
+
+        <div class="employment-timeline">
+          <div class="timeline-title">// Employment History</div>
+          <div class="timeline-item">
+            <div class="tl-dot"></div>
+            <div>
+              <div class="tl-date">Dec 2022 →</div>
+              <div class="tl-role">Senior Automation Engineer</div>
+              <div class="tl-company">Novigo Solutions</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="tl-dot"></div>
+            <div>
+              <div class="tl-date">Sep 2021</div>
+              <div class="tl-role">Sr RPA Developer</div>
+              <div class="tl-company">VSM Software Pvt Ltd</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="tl-dot dim"></div>
+            <div>
+              <div class="tl-date">Jan 2021</div>
+              <div class="tl-role">RPA Developer</div>
+              <div class="tl-company">USPL Airlabs Pvt Ltd</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="tl-dot dim"></div>
+            <div>
+              <div class="tl-date">Jan 2020</div>
+              <div class="tl-role">Intern Engineer</div>
+              <div class="tl-company">DRDO</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="tl-dot dim"></div>
+            <div>
+              <div class="tl-date">Oct 2019</div>
+              <div class="tl-role">Internship</div>
+              <div class="tl-company">Travancore Titanium Products Ltd</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="skills-inner">
+    <div class="section-label reveal">// Skills & Tools</div>
+    <h2 class="reveal">Technical Expertise</h2>
+    <p class="section-desc reveal">Full-stack RPA capability — from Studio to Orchestrator, AI Center to Gen AI integrations.</p>
+    <div class="skills-grid">
+      <div class="skill-card reveal">
+        <div class="skill-icon">🎯</div>
+        <div class="skill-name">UiPath Studio</div>
+        <div class="skill-items">Sequences, Flowcharts, REFramework,<br><span>Selectors, Activities, Custom Packages</span></div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-icon">🧠</div>
+        <div class="skill-name">Document Understanding</div>
+        <div class="skill-items">OCR, ML Extraction, Form Recognition,<br><span>AI Center, Gen AI Connector, DU Pipeline</span></div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-icon">☁️</div>
+        <div class="skill-name">UiPath Orchestrator</div>
+        <div class="skill-items">Bot Deployment, Scheduling, Queues,<br><span>Assets, Monitoring, Multi-Robot Management</span></div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-icon">🤖</div>
+        <div class="skill-name">AI & Gen AI</div>
+        <div class="skill-items">ChatGPT Integration, OpenAI APIs,<br><span>AI Trust Layer, AI Center, ML Models</span></div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-icon">💻</div>
+        <div class="skill-name">Languages</div>
+        <div class="skill-items">Python, VB.NET, C#<br><span>SQL Server, Postman, Swagger</span></div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-icon">🔗</div>
+        <div class="skill-name">Integrations & Tools</div>
+        <div class="skill-items">External APIs, Salesforce, SharePoint,<br><span>Office 365, Active Directory, PowerShell</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="projects-inner">
+    <div class="section-label reveal">// Projects</div>
+    <h2 class="reveal">Professional Experience Highlights</h2>
+    <p class="section-desc reveal">Real-world automation solutions delivered across banking, HR, real estate, and insurance domains.</p>
+    <div class="projects-grid">
+
+      <div class="project-card reveal">
+        <div class="project-num">01</div>
+        <div class="project-domain">HR · IT</div>
+        <div class="project-title">User Onboarding / Permission Assign / Exit (Active Directory)</div>
+        <p class="project-desc">Automates end-to-end employee onboarding and offboarding in the organization. When a new employee joins, the bot creates an AD account, assigns roles, and configures access. On exit, it deactivates accounts and revokes corporate system access — enhancing security, compliance, and operational efficiency.</p>
+        <div class="project-stack">
+          <span class="stack-tag">Active Directory</span>
+          <span class="stack-tag">Ramco Portal</span>
+          <span class="stack-tag">PowerShell</span>
+          <span class="stack-tag">API</span>
+          <span class="stack-tag">UiPath</span>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-num">02</div>
+        <div class="project-domain">Finance</div>
+        <div class="project-title">AR/AP Invoice Extraction</div>
+        <p class="project-desc">Automates PDF invoice data extraction using UiPath Document Understanding. The bot retrieves emails, identifies PDF attachments, applies AI-based OCR and form recognition to extract structured data, and produces formatted Excel reports — eliminating manual data entry and increasing processing accuracy.</p>
+        <div class="project-stack">
+          <span class="stack-tag">Office 365</span>
+          <span class="stack-tag">Doc Understanding</span>
+          <span class="stack-tag">AI Center</span>
+          <span class="stack-tag">OCR</span>
+          <span class="stack-tag">Excel</span>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-num">03</div>
+        <div class="project-domain">Real Estate</div>
+        <div class="project-title">Sales Listing Report Downloading from Redfin</div>
+        <p class="project-desc">Automates collection, transformation, and delivery of real estate data from multiple regional sources. The bot downloads reports, cleans and standardizes data, applies client-specific business rules, and compiles consolidated reports — ensuring timely, accurate delivery of property insights across regions.</p>
+        <div class="project-stack">
+          <span class="stack-tag">Excel</span>
+          <span class="stack-tag">Chrome</span>
+          <span class="stack-tag">UiPath</span>
+          <span class="stack-tag">Web Scraping</span>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-num">04</div>
+        <div class="project-domain">Banking</div>
+        <div class="project-title">MT940 Reconciliation — TAS Portal Upload</div>
+        <p class="project-desc">Converts MT940 bank reports into required formats for GCC banks, reconciles with Salesforce via API by fetching credit transaction receipts, calculates a confidence score, and auto-uploads to the TAS portal. Low-confidence transactions are flagged for business review. Uses modern selectors with healing agent enabled.</p>
+        <div class="project-stack">
+          <span class="stack-tag">Doc Understanding</span>
+          <span class="stack-tag">Salesforce API</span>
+          <span class="stack-tag">Excel</span>
+          <span class="stack-tag">Chrome</span>
+          <span class="stack-tag">Healing Agent</span>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-num">05</div>
+        <div class="project-domain">HR · Gen AI</div>
+        <div class="project-title">HR Resume Extraction & Interview Scheduling</div>
+        <p class="project-desc">Designed for HR recruitment to handle thousands of daily emails. The bot uses Gen AI connector in UiPath DU to detect and classify resume attachments, extracts candidate info (name, skills, experience) via Gen AI extractor with AI Trust Layer for confidentiality, stores data in SharePoint, matches profiles to open roles, and auto-schedules interviews.</p>
+        <div class="project-stack">
+          <span class="stack-tag">Gen AI</span>
+          <span class="stack-tag">OpenAI</span>
+          <span class="stack-tag">SharePoint</span>
+          <span class="stack-tag">Email</span>
+          <span class="stack-tag">Excel</span>
+          <span class="stack-tag">AI Trust Layer</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="certs-inner">
+    <div class="section-label reveal">// Certifications</div>
+    <h2 class="reveal">Credentials</h2>
+    <p class="section-desc reveal">Officially certified by UiPath — validated expertise across professional RPA development, AI, and automation architecture.</p>
+    <div class="certs-grid">
+      <div class="cert-card reveal">
+        <div class="cert-icon">🏅</div>
+        <div>
+          <div class="cert-name">UiPath Certified Professional Business Analyst Professional</div>
+          <div class="cert-issuer">UiPath</div>
+          <div class="cert-badge">✓ Certified</div>
+        </div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-icon">🤖</div>
+        <div>
+          <div class="cert-name">UiPath Certified Specialized AI Associate</div>
+          <div class="cert-issuer">UiPath</div>
+          <div class="cert-badge">✓ Certified</div>
+        </div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-icon">🎓</div>
+        <div>
+          <div class="cert-name">UiPath Certified Automation Developer Professional</div>
+          <div class="cert-issuer">UiPath</div>
+          <div class="cert-badge">✓ Certified</div>
+        </div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-icon">🏛️</div>
+        <div>
+          <div class="cert-name">B.Tech in Engineering</div>
+          <div class="cert-issuer">Rajadhani Institute of Engineering and Technology</div>
+          <div class="cert-badge">✓ Graduate</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="section-label reveal">// Contact</div>
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <h2>Let's automate something great</h2>
+        <p>Looking to build an RPA Center of Excellence, automate a complex business process, or bring on a seasoned UiPath expert? I'm ready to help.</p>
+        <div class="contact-links">
+          <a href="mailto:sandeepraj@email.com" class="contact-link">
+            <span class="link-icon">✉</span> sandeepraj@email.com
+          </a>
+          <a href="https://linkedin.com/in/sandeepraj" class="contact-link" target="_blank">
+            <span class="link-icon">in</span> linkedin.com/in/sandeepraj
+          </a>
+          <a href="#" class="contact-link">
+            <span class="link-icon">📍</span> India
+          </a>
+        </div>
+      </div>
+      <div class="contact-form reveal">
+        <div class="form-group">
+          <label>Name</label>
+          <input type="text" placeholder="Your Name" />
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" placeholder="your@email.com" />
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea placeholder="Tell me about your automation needs..."></textarea>
+        </div>
+        <button class="form-submit" onclick="this.textContent='Message Sent ✓'; this.style.background='var(--green)'">Send Message</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-copy">© 2026 <span>Sandeep Raj</span> · Senior RPA Developer</div>
+  <div class="footer-note">Built with precision. Automated with passion.</div>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 70);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
