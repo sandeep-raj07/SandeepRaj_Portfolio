@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sandeep Raj | Senior RPA & Automation Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+[data-theme="dark"]{
+  --bg:#07090c;--s1:#0d1117;--s2:#111820;
+  --border:#1c2733;--border2:#243040;
+  --text:#9eb3c4;--text-dim:#4a6075;--text-hi:#e8f4ff;
+  --line:rgba(232,244,255,0.06);
+  --green:#3ddc84;--amber:#f5a623;--red:#ff5f6d;--purple:#a78bfa;
+}
+[data-theme="light"]{
+  --bg:#f4f6fa;--s1:#ffffff;--s2:#edf0f5;
+  --border:#dde3ec;--border2:#c8d0dc;
+  --text:#4a5568;--text-dim:#8899aa;--text-hi:#111827;
+  --line:rgba(0,0,0,0.05);
+  --green:#1a7a3c;--amber:#b45309;--red:#c0392b;--purple:#6d28d9;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Outfit',sans-serif;font-size:15px;line-height:1.7;overflow-x:hidden;transition:background .3s,color .3s}
+[data-theme="dark"] body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");opacity:.35}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:15px 56px;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);transition:background .3s,border-color .3s}
+.logo{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;color:var(--text-hi)}
+.logo em{color:var(--text-dim);font-style:normal}
+.nav-right{display:flex;align-items:center;gap:18px}
+.nav-links{display:flex;gap:30px;list-style:none}
+.nav-links a{color:var(--text-dim);text-decoration:none;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.8px;text-transform:uppercase;transition:color .25s}
+.nav-links a:hover{color:var(--text-hi)}
+.nav-pill{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;border:1px solid color-mix(in srgb,var(--green) 40%,transparent);color:var(--green);padding:5px 14px;background:color-mix(in srgb,var(--green) 7%,transparent)}
+.nav-pill::before{content:'● ';font-size:7px;animation:blink 1.8s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.15}}
+.theme-btn{width:34px;height:34px;border:1px solid var(--border2);background:var(--s2);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;transition:all .3s;flex-shrink:0}
+.theme-btn:hover{border-color:var(--text-dim)}
+
+/* HERO */
+#hero{min-height:100vh;display:flex;align-items:center;padding:130px 56px 80px;position:relative;overflow:hidden}
+.hero-bg-grid{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:72px 72px;animation:gridScroll 22s linear infinite}
+@keyframes gridScroll{0%{background-position:0 0}100%{background-position:72px 72px}}
+.hero-orb{position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--text-hi) 4%,transparent) 0%,transparent 68%);top:50%;right:-60px;transform:translateY(-50%);animation:orb 7s ease-in-out infinite}
+@keyframes orb{0%,100%{opacity:.5;transform:translateY(-50%) scale(1)}50%{opacity:1;transform:translateY(-52%) scale(1.1)}}
+.hero-inner{position:relative;z-index:1;max-width:900px}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;border:1px solid color-mix(in srgb,var(--green) 35%,transparent);background:color-mix(in srgb,var(--green) 7%,transparent);color:var(--green);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:6px 16px;margin-bottom:32px;animation:fadeUp .7s ease both}
+.hero-name{font-family:'Bebas Neue',sans-serif;font-size:clamp(72px,10vw,120px);line-height:.9;letter-spacing:2px;color:var(--text-hi);animation:fadeUp .7s ease .08s both}
+.hero-name .muted{color:var(--text-dim)}
+.hero-role{margin-top:18px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text-dim);letter-spacing:2px;text-transform:uppercase;animation:fadeUp .7s ease .14s both}
+.hero-role span{color:var(--amber)}
+.hero-sub{margin-top:22px;max-width:580px;font-size:15px;color:var(--text);line-height:1.9;animation:fadeUp .7s ease .2s both}
+.hero-sub strong{color:var(--text-hi);font-weight:500}
+.hero-ctas{margin-top:40px;display:flex;gap:14px;flex-wrap:wrap;animation:fadeUp .7s ease .28s both}
+.btn{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:13px 32px;text-decoration:none;display:inline-block;transition:all .3s;cursor:pointer;border:none}
+.btn-solid{background:var(--text-hi);color:var(--bg);clip-path:polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%)}
+.btn-solid:hover{transform:translateY(-2px);opacity:.9}
+.hero-stats{margin-top:56px;display:flex;gap:0;flex-wrap:wrap;border:1px solid var(--border);animation:fadeUp .7s ease .36s both}
+.stat{flex:1;min-width:130px;padding:20px 24px;border-right:1px solid var(--border)}
+.stat:last-child{border-right:none}
+.stat-n{font-family:'Bebas Neue',sans-serif;font-size:34px;color:var(--text-hi);line-height:1}
+.stat-n em{color:var(--text-dim);font-style:normal;font-size:20px}
+.stat-l{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-dim);margin-top:4px}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+/* SECTIONS */
+section{padding:96px 56px;position:relative;z-index:1}
+.sec-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--text-dim);margin-bottom:8px;display:flex;align-items:center;gap:10px}
+.sec-label::after{content:'';flex:0 0 32px;height:1px;background:var(--text-dim)}
+.sec-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(34px,5vw,56px);color:var(--text-hi);letter-spacing:1px;line-height:1;margin-bottom:12px}
+.sec-desc{color:var(--text-dim);max-width:520px;margin-bottom:52px;line-height:1.9;font-size:14px}
+.inner{max-width:1120px;margin:0 auto}
+
+/* ABOUT */
+#about{background:var(--s1);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.about-grid{display:grid;grid-template-columns:300px 1fr;gap:64px;align-items:start}
+.identity-card{background:var(--s2);border:1px solid var(--border);padding:28px;margin-bottom:24px;position:relative;overflow:hidden}
+.identity-card::before{content:'SR';font-family:'Bebas Neue',sans-serif;font-size:150px;color:var(--border);position:absolute;right:-8px;bottom:-28px;line-height:1;pointer-events:none}
+.id-name{font-family:'Bebas Neue',sans-serif;font-size:38px;letter-spacing:1px;color:var(--text-hi);line-height:1;margin-bottom:5px}
+.id-title{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-dim);margin-bottom:16px}
+.id-badges{display:flex;flex-wrap:wrap;gap:5px}
+.id-badge{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:1px;text-transform:uppercase;border:1px solid var(--border2);color:var(--text-dim);padding:3px 9px}
+.info-list{display:flex;flex-direction:column;gap:6px}
+.info-row{display:flex;gap:12px;align-items:flex-start;background:var(--bg);border:1px solid var(--border);padding:9px 14px;font-size:12px}
+.info-k{color:var(--text-dim);min-width:64px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1px}
+.info-v{color:var(--text-hi)}
+.about-body p{color:var(--text);line-height:1.95;margin-bottom:16px;font-size:14px}
+.timeline{margin-top:28px}
+.tl-head{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--text-dim);margin-bottom:10px}
+.tl-item{display:flex;gap:14px;padding:11px 0;border-bottom:1px solid var(--border)}
+.tl-item:last-child{border-bottom:none}
+.tl-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:5px;background:var(--text-hi)}
+.tl-dot.dim{background:var(--text-dim)}
+.tl-date{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--amber);min-width:72px}
+.tl-role{font-size:13px;color:var(--text-hi);font-weight:500}
+.tl-co{font-size:11px;color:var(--text-dim);margin-top:2px}
+
+/* METRICS BAND */
+#metrics{background:var(--s1);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:52px 56px}
+.metrics-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));border:1px solid var(--border)}
+.metric{padding:26px 22px;border-right:1px solid var(--border);text-align:center}
+.metric:last-child{border-right:none}
+.metric-n{font-family:'Bebas Neue',sans-serif;font-size:46px;color:var(--text-hi);line-height:1}
+.metric-n span{color:var(--amber)}
+.metric-l{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-dim);margin-top:6px}
+
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(248px,1fr));gap:2px}
+.skill-card{background:var(--s1);border:1px solid var(--border);padding:22px 20px;position:relative;overflow:hidden;transition:all .3s}
+.skill-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--text-dim),transparent);transform:scaleX(0);transform-origin:left;transition:transform .4s}
+.skill-card:hover::before{transform:scaleX(1)}
+.skill-card:hover{background:var(--s2)}
+.skill-icon{font-size:19px;margin-bottom:9px}
+.skill-name{font-family:'Bebas Neue',sans-serif;font-size:17px;color:var(--text-hi);margin-bottom:6px}
+.skill-desc{font-size:11px;color:var(--text-dim);margin-bottom:9px;line-height:1.7}
+.skill-tags{display:flex;flex-wrap:wrap;gap:4px}
+.stag{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.4px;border:1px solid var(--border2);color:var(--text-dim);padding:2px 7px;text-transform:uppercase}
+
+/* PROJECTS */
+#projects{background:var(--s1);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:18px}
+.proj{background:var(--bg);border:1px solid var(--border);padding:26px;position:relative;overflow:hidden;transition:all .3s}
+.proj:hover{border-color:var(--border2);transform:translateY(-3px)}
+.proj::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--text-dim),transparent);transform:scaleX(0);transform-origin:left;transition:transform .45s}
+.proj:hover::after{transform:scaleX(1)}
+.proj-num{font-family:'Bebas Neue',sans-serif;font-size:42px;color:var(--border);position:absolute;top:10px;right:14px;line-height:1}
+.proj-domain{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:1.5px;text-transform:uppercase;border:1px solid var(--border2);color:var(--text-dim);padding:3px 9px;margin-bottom:11px}
+.proj-title{font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--text-hi);margin-bottom:7px;line-height:1.2}
+.proj-metric{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1px;background:color-mix(in srgb,var(--green) 8%,transparent);border:1px solid color-mix(in srgb,var(--green) 25%,transparent);color:var(--green);padding:3px 9px;margin-bottom:10px}
+.proj-desc{font-size:12px;color:var(--text-dim);line-height:1.85;margin-bottom:14px}
+.proj-stack{display:flex;flex-wrap:wrap;gap:4px}
+.ptag{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.4px;border:1px solid var(--border2);color:var(--text-dim);padding:2px 7px;text-transform:uppercase}
+
+/* CERTS */
+.certs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+.cert{background:var(--s1);border:1px solid var(--border);padding:20px 18px;display:flex;gap:14px;align-items:flex-start;transition:all .3s}
+.cert:hover{border-color:var(--border2);background:var(--s2)}
+.cert-icon{width:40px;height:40px;flex-shrink:0;background:color-mix(in srgb,var(--text-hi) 5%,transparent);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:17px}
+.cert-name{font-weight:600;font-size:13px;color:var(--text-hi);margin-bottom:3px;line-height:1.3}
+.cert-by{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--text-dim);margin-bottom:4px}
+.cert-badge{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:1px;text-transform:uppercase;background:color-mix(in srgb,var(--green) 8%,transparent);border:1px solid color-mix(in srgb,var(--green) 25%,transparent);color:var(--green);padding:2px 8px}
+
+/* ── SLIDESHOW ── */
+#slideshow{background:var(--bg);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:80px 56px;overflow:hidden}
+.slide-header{max-width:1120px;margin:0 auto 40px}
+.slide-track-wrap{position:relative;max-width:1120px;margin:0 auto}
+
+/* outer fade edges */
+.slide-track-wrap::before,
+.slide-track-wrap::after{content:'';position:absolute;top:0;bottom:0;width:80px;z-index:10;pointer-events:none}
+.slide-track-wrap::before{left:0;background:linear-gradient(to right,var(--bg),transparent)}
+.slide-track-wrap::after{right:0;background:linear-gradient(to left,var(--bg),transparent)}
+
+.slide-viewport{overflow:hidden;position:relative}
+.slide-track{display:flex;gap:20px;transition:transform .55s cubic-bezier(.4,0,.2,1)}
+.slide-card{
+  flex:0 0 340px;background:var(--s1);border:1px solid var(--border);
+  padding:28px 24px;position:relative;overflow:hidden;
+  transition:border-color .3s,transform .3s;
+}
+.slide-card:hover{border-color:var(--border2);transform:translateY(-3px)}
+.slide-card::before{content:'';position:absolute;inset:0;opacity:0;transition:opacity .3s}
+.slide-card:hover::before{opacity:1}
+
+/* top accent bar per card */
+.slide-card .accent-bar{position:absolute;top:0;left:0;right:0;height:2px}
+
+.sc-category{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--text-dim);margin-bottom:12px;display:flex;align-items:center;gap:6px}
+.sc-category::before{content:'';display:inline-block;width:18px;height:1px;background:var(--text-dim)}
+.sc-icon{font-size:28px;margin-bottom:14px;display:block}
+.sc-title{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:.5px;color:var(--text-hi);line-height:1;margin-bottom:10px}
+.sc-body{font-size:12px;color:var(--text-dim);line-height:1.8;margin-bottom:16px}
+.sc-tags{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:16px}
+.sc-tag{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.4px;border:1px solid var(--border2);color:var(--text-dim);padding:2px 7px;text-transform:uppercase}
+.sc-stat{margin-top:auto;padding-top:16px;border-top:1px solid var(--border);display:flex;align-items:baseline;gap:6px}
+.sc-stat-n{font-family:'Bebas Neue',sans-serif;font-size:30px;color:var(--text-hi);line-height:1}
+.sc-stat-l{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--text-dim);letter-spacing:1px;text-transform:uppercase}
+
+/* nav dots + arrows */
+.slide-nav{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:28px}
+.slide-arrow{width:36px;height:36px;border:1px solid var(--border2);background:var(--s1);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--text-dim);transition:all .3s;user-select:none;flex-shrink:0}
+.slide-arrow:hover{border-color:var(--text-hi);color:var(--text-hi)}
+.slide-dots{display:flex;gap:8px}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--border2);cursor:pointer;transition:all .3s}
+.dot.active{background:var(--text-hi);width:20px;border-radius:3px}
+
+/* progress bar */
+.slide-progress{height:1px;background:var(--border);max-width:1120px;margin:16px auto 0;position:relative}
+.slide-progress-fill{position:absolute;top:0;left:0;height:100%;background:var(--text-dim);transition:width .55s ease}
+
+/* CONNECT */
+#contact{background:var(--s1);border-top:1px solid var(--border)}
+.connect-wrap{max-width:900px;margin:0 auto}
+.connect-inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.connect-left p{color:var(--text-dim);line-height:1.9;margin-bottom:32px;font-size:14px}
+.c-links{display:flex;flex-direction:column;gap:8px}
+.c-link{display:flex;align-items:center;gap:14px;color:var(--text);text-decoration:none;font-size:12px;padding:11px 16px;background:var(--bg);border:1px solid var(--border);transition:all .3s;font-family:'JetBrains Mono',monospace}
+.c-link:hover{border-color:var(--border2);color:var(--text-hi)}
+.c-ico{width:16px;text-align:center;font-size:13px;flex-shrink:0}
+.connect-right{display:flex;flex-direction:column;gap:12px}
+.qf-card{background:var(--bg);border:1px solid var(--border);padding:22px 24px}
+.qf-head{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--text-dim);margin-bottom:14px}
+.qf-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border)}
+.qf-row:last-child{border-bottom:none}
+.qf-k{font-size:13px;color:var(--text)}
+.qf-v{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-hi)}
+.qf-v.avail{color:var(--green)}
+
+/* FOOTER */
+footer{padding:24px 56px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.footer-copy{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text-dim)}
+.footer-copy em{color:var(--text-hi);font-style:normal}
+.footer-note{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--text-dim);letter-spacing:1px}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.reveal.vis{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:960px){
+  nav{padding:13px 20px}.nav-links{display:none}
+  section,#metrics,#slideshow,#contact{padding:64px 20px}
+  .about-grid{grid-template-columns:1fr;gap:32px}
+  .connect-inner{grid-template-columns:1fr;gap:32px}
+  footer{padding:16px 20px}
+  #hero{padding:110px 20px 60px}
+  .hero-stats .stat{border-right:none;border-bottom:1px solid var(--border)}
+  .hero-stats .stat:last-child{border-bottom:none}
+  .metric{border-right:none;border-bottom:1px solid var(--border)}
+  .metric:last-child{border-bottom:none}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Sandeep <em>Raj</em></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#certifications">Certs</a></li>
+    <li><a href="#slideshow">Highlights</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="theme-btn" id="themeBtn" title="Toggle light/dark">🌙</button>
+    <div class="nav-pill">Open to Work</div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-orb"></div>
+  <div class="hero-inner">
+    <div class="hero-tag">5+ Years RPA · UiPath Certified · Agentic AI · Solution Architect</div>
+    <div class="hero-name">
+      <div class="muted">Sandeep</div>
+      <div>Raj</div>
+    </div>
+    <div class="hero-role">Senior <span>Automation Engineer</span> · UiPath Certified Professional</div>
+    <p class="hero-sub">
+      Transforming complex business processes into intelligent, scalable automation.
+      Specialist in <strong>UiPath</strong>, <strong>Agentic AI</strong>, <strong>Document Understanding</strong>,
+      <strong>LangGraph</strong> and <strong>Gen AI</strong> — across banking, HR, finance and insurance.
+      Saving <strong>1,500+ FTE hours/month</strong> through production-grade bots and intelligent agent workflows.
+    </p>
+    <div class="hero-ctas">
+      <a href="#projects" class="btn btn-solid">View Projects</a>
+      <a href="mailto:rajsandeep1998@gmail.com" class="btn btn-solid" style="clip-path:none;background:transparent;border:1px solid var(--border2);color:var(--text)">rajsandeep1998@gmail.com</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-n">5<em>yr</em></div><div class="stat-l">RPA Experience</div></div>
+      <div class="stat"><div class="stat-n">50<em>+</em></div><div class="stat-l">Processes Developed</div></div>
+      <div class="stat"><div class="stat-n">20<em>+</em></div><div class="stat-l">Solutions Architected</div></div>
+      <div class="stat"><div class="stat-n">20<em>+</em></div><div class="stat-l">Requirements as BA</div></div>
+      <div class="stat"><div class="stat-n">3<em>x</em></div><div class="stat-l">UiPath Certified</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="inner">
+    <div class="about-grid">
+      <div class="reveal">
+        <div class="identity-card">
+          <div class="id-name">Sandeep Raj</div>
+          <div class="id-title">Senior RPA & Automation Engineer</div>
+          <div class="id-badges">
+            <span class="id-badge">UiPath Expert</span><span class="id-badge">Solution Architect</span>
+            <span class="id-badge">Business Analyst</span><span class="id-badge">Tech Lead</span>
+          </div>
+        </div>
+        <div class="info-list">
+          <div class="info-row"><span class="info-k">Current</span><span class="info-v">Novigo Solutions Pvt Ltd</span></div>
+          <div class="info-row"><span class="info-k">Domains</span><span class="info-v">Banking · HR · Finance · Insurance</span></div>
+          <div class="info-row"><span class="info-k">Degree</span><span class="info-v">B.Tech — RIET, Kerala</span></div>
+          <div class="info-row"><span class="info-k">Location</span><span class="info-v">India — Open to Remote</span></div>
+          <div class="info-row"><span class="info-k">Status</span><span class="info-v" style="color:var(--green)">● Open to Work</span></div>
+        </div>
+      </div>
+      <div class="about-body reveal">
+        <div class="sec-label">// About Me</div>
+        <div class="sec-title">Building Intelligent Automation at Scale</div>
+        <p>Senior RPA & Automation Engineer with 5+ years dedicated to Robotic Process Automation using UiPath. Delivered 10+ enterprise automation projects saving over 1,500 FTE hours per month, achieving 90%+ straight-through processing rates across banking, HR, finance, real estate, and insurance.</p>
+        <p>Wore three hats across engagements — as a <strong>Technical Lead</strong> architecting 20+ end-to-end automation solutions, as a <strong>Business Analyst</strong> formalising 20+ process requirements, and as a hands-on developer building 50+ automated processes. Deep expertise across Agentic AI, UiPath Apps, Action Apps, Document Understanding, LangGraph, and Gen AI integrations.</p>
+        <div class="timeline">
+          <div class="tl-head">// Employment History</div>
+          <div class="tl-item"><div class="tl-dot"></div><div><div class="tl-date">Dec 2022 →</div><div class="tl-role">Senior Automation Engineer</div><div class="tl-co">Novigo Solutions Pvt Ltd</div></div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div><div class="tl-date">Sep 2021</div><div class="tl-role">Senior RPA Developer</div><div class="tl-co">VSM Software Pvt Ltd</div></div></div>
+          <div class="tl-item"><div class="tl-dot dim"></div><div><div class="tl-date">Jan 2021</div><div class="tl-role">RPA Developer</div><div class="tl-co">USPL Airlabs Pvt Ltd</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METRICS -->
+<div id="metrics">
+  <div class="inner">
+    <div class="metrics-grid">
+      <div class="metric reveal"><div class="metric-n">50<span>+</span></div><div class="metric-l">Processes Developed</div></div>
+      <div class="metric reveal"><div class="metric-n">20<span>+</span></div><div class="metric-l">Solutions Architected</div></div>
+      <div class="metric reveal"><div class="metric-n">20<span>+</span></div><div class="metric-l">Requirements (BA)</div></div>
+      <div class="metric reveal"><div class="metric-n">1500<span>+</span></div><div class="metric-l">FTE Hours / Month</div></div>
+      <div class="metric reveal"><div class="metric-n">92<span>%</span></div><div class="metric-l">Avg STP Rate</div></div>
+      <div class="metric reveal"><div class="metric-n">95<span>%+</span></div><div class="metric-l">Bot Uptime</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="inner">
+    <div class="sec-label reveal">// Skills & Tools</div>
+    <div class="sec-title reveal">Technical Expertise</div>
+    <p class="sec-desc reveal">Full-stack RPA capability — Studio to Orchestrator, Agentic AI to LangGraph, Document Understanding to Gen AI.</p>
+    <div class="skills-grid">
+      <div class="skill-card reveal"><div class="skill-icon">🎯</div><div class="skill-name">UiPath Studio</div><div class="skill-desc">Sequences · Flowcharts · REFramework · Selectors · Custom Activities</div><div class="skill-tags"><span class="stag">Studio</span><span class="stag">StudioX</span><span class="stag">StudioWeb</span><span class="stag">REFramework</span></div></div>
+      <div class="skill-card reveal"><div class="skill-icon">🤖</div><div class="skill-name">Agentic AI</div><div class="skill-desc">UiPath Agentic AI · AI Agents · Agent Builder · Autonomous Bots · LLM Orchestration</div><div class="skill-tags"><span class="stag">Agentic AI</span><span class="stag">AI Agents</span><span class="stag">Agent Builder</span></div></div>
+      <div class="skill-card reveal"><div class="skill-icon">🧠</div><div class="skill-name">Document Understanding</div><div class="skill-desc">OCR · ML Extractor · Gen AI Extractor · Form Recognition · Validation Station</div><div class="skill-tags"><span class="stag">DU Pipeline</span><span class="stag">AI Center</span><span class="stag">Gen AI Extractor</span></div></div>
+      <div class="skill-card reveal"><div class="skill-icon">📱</div><div class="skill-name">UiPath Apps & Action Apps</div><div class="skill-desc">Human-in-the-loop dashboards · Business user UIs · Action Center review flows</div><div class="skill-tags"><span class="stag">UiPath Apps</span><span class="stag">Action Apps</span><span class="stag">Action Center</span></div></div>
+      <div class="skill-card reveal"><div class="skill-icon">🔗</div><div class="skill-name">Gen AI & LangGraph</div><div class="skill-desc">OpenAI / ChatGPT · Gen AI Connector · AI Trust Layer · LangGraph · LLM Chaining</div><div class="skill-tags"><span class="stag">OpenAI</span><span class="stag">LangGraph</span><span class="stag">AI Trust Layer</span></div></div>
+      <div class="skill-card reveal"><div class="skill-icon">☁️</div><div class="skill-name">Orchestrator & Bots</div><div class="skill-desc">Attended Bot · Unattended Bot · Queues · Assets · Scheduling · Multi-robot</div><div class="skill-tags"><span class="stag">Orchestrator</span><span class="stag">Attended</span><span class="stag">Unattended</span></div></div>
+      <div class="skill-card reveal"><div class="skill-icon">🔌</div><div class="skill-name">Integrations</div><div class="skill-desc">Salesforce · SharePoint · Office 365 · Active Directory · REST APIs · PowerShell</div><div class="skill-tags"><span class="stag">Salesforce</span><span class="stag">SharePoint</span><span class="stag">O365</span><span class="stag">AD</span></div></div>
+      <div class="skill-card reveal"><div class="skill-icon">💻</div><div class="skill-name">Languages & Tools</div><div class="skill-desc">Python · VB.NET · C# · SQL Server · Postman · Swagger</div><div class="skill-tags"><span class="stag">Python</span><span class="stag">VB.NET</span><span class="stag">C#</span><span class="stag">SQL</span></div></div>
+      <div class="skill-card reveal"><div class="skill-icon">🏗️</div><div class="skill-name">Architecture & BA</div><div class="skill-desc">Solution Design · PDD/SDD · Requirements Gathering · UAT · CoE · Agile/Scrum</div><div class="skill-tags"><span class="stag">PDD/SDD</span><span class="stag">BA</span><span class="stag">CoE</span><span class="stag">Agile</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="inner">
+    <div class="sec-label reveal">// Projects</div>
+    <div class="sec-title reveal">Professional Experience Highlights</div>
+    <p class="sec-desc reveal">Quantified automation solutions across banking, HR, finance, real estate, and insurance.</p>
+    <div class="projects-grid">
+      <div class="proj reveal"><div class="proj-num">01</div><div class="proj-domain">HR · Gen AI</div><div class="proj-title">HR Resume Extraction & Interview Scheduling</div><div class="proj-metric">↓ 65% time-to-schedule · 5,000+ emails/day</div><p class="proj-desc">Processes 5,000+ recruitment emails daily using DU with Gen AI Connector. AI Trust Layer ensures confidential PII extraction. Data stored in SharePoint, profiles matched to roles, interviews auto-scheduled. Action App for HR approvals.</p><div class="proj-stack"><span class="ptag">Gen AI</span><span class="ptag">OpenAI</span><span class="ptag">Doc Understanding</span><span class="ptag">AI Trust Layer</span><span class="ptag">Action Apps</span><span class="ptag">SharePoint</span></div></div>
+      <div class="proj reveal"><div class="proj-num">02</div><div class="proj-domain">Banking</div><div class="proj-title">MT940 Bank Reconciliation — TAS Portal</div><div class="proj-metric">91% straight-through · 20% downtime eliminated</div><p class="proj-desc">Converts MT940 statements for GCC banks, reconciles vs Salesforce via REST API with confidence scoring, auto-uploads to TAS portal. Low-confidence items flagged via Action Center. UiPath Healing Agent for selector resilience.</p><div class="proj-stack"><span class="ptag">Doc Understanding</span><span class="ptag">Salesforce API</span><span class="ptag">Action Center</span><span class="ptag">Healing Agent</span></div></div>
+      <div class="proj reveal"><div class="proj-num">03</div><div class="proj-domain">Finance</div><div class="proj-title">AR/AP Invoice Extraction Automation</div><div class="proj-metric">200 FTE hrs/month saved · 92% accuracy · 3,000+ invoices</div><p class="proj-desc">Full PDF invoice pipeline — email retrieval, AI OCR, ML Extractor via AI Center, structured Excel output. Eliminated manual data entry for 3,000+ invoices/month.</p><div class="proj-stack"><span class="ptag">Doc Understanding</span><span class="ptag">AI Center</span><span class="ptag">OCR</span><span class="ptag">Office 365</span><span class="ptag">Excel</span></div></div>
+      <div class="proj reveal"><div class="proj-num">04</div><div class="proj-domain">HR · IT</div><div class="proj-title">Employee Onboarding / Exit Automation</div><div class="proj-metric">2 days → 2 hours · 10+ systems automated</div><p class="proj-desc">End-to-end lifecycle automation across 10+ systems. AD account creation, role assignment on joining; deactivation and access revocation on exit.</p><div class="proj-stack"><span class="ptag">Active Directory</span><span class="ptag">PowerShell</span><span class="ptag">REST API</span><span class="ptag">Ramco</span></div></div>
+      <div class="proj reveal"><div class="proj-num">05</div><div class="proj-domain">Real Estate</div><div class="proj-title">Real Estate Sales Listing — Redfin</div><div class="proj-metric">60 hrs/week saved · 8 markets automated</div><p class="proj-desc">Automated data collection, transformation, and consolidation from Redfin across 8 markets. Client-specific business rules; consolidated reports delivered on schedule.</p><div class="proj-stack"><span class="ptag">Web Scraping</span><span class="ptag">Chrome</span><span class="ptag">Excel</span><span class="ptag">UiPath</span></div></div>
+      <div class="proj reveal"><div class="proj-num">06</div><div class="proj-domain">Multi-Agent · LangGraph</div><div class="proj-title">Agentic Multi-Agent Orchestration</div><div class="proj-metric">30% rule-maintenance overhead reduced</div><p class="proj-desc">LangGraph stateful agent graphs for multi-agent orchestration in complex HR and finance flows. UiPath Agentic AI enables LLM-driven dynamic task resolution — autonomous bots that adapt without hardcoded rules.</p><div class="proj-stack"><span class="ptag">Agentic AI</span><span class="ptag">LangGraph</span><span class="ptag">AI Agents</span><span class="ptag">OpenAI</span><span class="ptag">UiPath Apps</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="inner">
+    <div class="sec-label reveal">// Certifications</div>
+    <div class="sec-title reveal">Credentials</div>
+    <p class="sec-desc reveal">3 active UiPath certifications — validated across RPA development, AI, and business analysis.</p>
+    <div class="certs-grid">
+      <div class="cert reveal"><div class="cert-icon">🎓</div><div><div class="cert-name">UiPath Certified Automation Developer Professional (UiARD)</div><div class="cert-by">UiPath</div><div class="cert-badge">✓ Active</div></div></div>
+      <div class="cert reveal"><div class="cert-icon">🤖</div><div><div class="cert-name">UiPath Certified Specialized AI Associate</div><div class="cert-by">UiPath</div><div class="cert-badge">✓ Active</div></div></div>
+      <div class="cert reveal"><div class="cert-icon">🏅</div><div><div class="cert-name">UiPath Certified Professional Business Analyst</div><div class="cert-by">UiPath</div><div class="cert-badge">✓ Active</div></div></div>
+      <div class="cert reveal"><div class="cert-icon">🏛️</div><div><div class="cert-name">Bachelor of Technology (B.Tech) in Engineering</div><div class="cert-by">Rajadhani Institute of Engineering and Technology, Kerala</div><div class="cert-badge">✓ Graduate 2019</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDESHOW -->
+<div id="slideshow">
+  <div class="slide-header reveal">
+    <div class="sec-label">// Skills &amp; Experience Highlights</div>
+    <div class="sec-title">What I Bring to the Table</div>
+    <p class="sec-desc" style="margin-bottom:0">Swipe through key expertise areas, impact metrics, and domain knowledge.</p>
+  </div>
+  <div class="slide-track-wrap reveal">
+    <div class="slide-viewport">
+      <div class="slide-track" id="slideTrack">
+
+        <div class="slide-card" style="--accent-color:#3ddc84">
+          <div class="accent-bar" style="background:var(--green)"></div>
+          <div class="sc-category">RPA Core</div>
+          <span class="sc-icon">🎯</span>
+          <div class="sc-title">UiPath REFramework Expert</div>
+          <div class="sc-body">5+ years building production-grade attended and unattended bots using REFramework. Expert in queue-based processing, exception handling, retry logic, and Orchestrator integration.</div>
+          <div class="sc-tags"><span class="sc-tag">REFramework</span><span class="sc-tag">Orchestrator</span><span class="sc-tag">Attended</span><span class="sc-tag">Unattended</span></div>
+          <div class="sc-stat"><div class="sc-stat-n">50<span style="font-size:16px;color:var(--text-dim)">+</span></div><div class="sc-stat-l">Processes Built</div></div>
+        </div>
+
+        <div class="slide-card" style="--accent-color:#a78bfa">
+          <div class="accent-bar" style="background:var(--purple)"></div>
+          <div class="sc-category">Agentic AI</div>
+          <span class="sc-icon">🤖</span>
+          <div class="sc-title">Agentic AI & LLM Orchestration</div>
+          <div class="sc-body">Integrates UiPath Agentic AI and LangGraph for autonomous, multi-agent workflows. Bots that reason, adapt, and make decisions using LLMs — reducing hardcoded rule maintenance by 30%.</div>
+          <div class="sc-tags"><span class="sc-tag">Agentic AI</span><span class="sc-tag">LangGraph</span><span class="sc-tag">AI Agents</span><span class="sc-tag">OpenAI</span></div>
+          <div class="sc-stat"><div class="sc-stat-n">30<span style="font-size:16px;color:var(--text-dim)">%</span></div><div class="sc-stat-l">Less Rule Maintenance</div></div>
+        </div>
+
+        <div class="slide-card">
+          <div class="accent-bar" style="background:var(--amber)"></div>
+          <div class="sc-category">Document Understanding</div>
+          <span class="sc-icon">🧠</span>
+          <div class="sc-title">AI-Powered Doc Extraction</div>
+          <div class="sc-body">End-to-end DU pipelines using OCR, ML Extractor, Gen AI Extractor, and Validation Station. Handles invoices, bank statements, resumes, and unstructured documents at scale.</div>
+          <div class="sc-tags"><span class="sc-tag">ML Extractor</span><span class="sc-tag">Gen AI Extractor</span><span class="sc-tag">AI Center</span><span class="sc-tag">OCR</span></div>
+          <div class="sc-stat"><div class="sc-stat-n">92<span style="font-size:16px;color:var(--text-dim)">%</span></div><div class="sc-stat-l">Straight-Through Rate</div></div>
+        </div>
+
+        <div class="slide-card">
+          <div class="accent-bar" style="background:var(--red)"></div>
+          <div class="sc-category">Solution Architecture</div>
+          <span class="sc-icon">🏗️</span>
+          <div class="sc-title">Solution Architect & Tech Lead</div>
+          <div class="sc-body">Designed 20+ end-to-end automation solutions from scratch — PDD, SDD, bot architecture, queue design, error handling strategy, Orchestrator configuration, and deployment planning.</div>
+          <div class="sc-tags"><span class="sc-tag">PDD</span><span class="sc-tag">SDD</span><span class="sc-tag">Architecture</span><span class="sc-tag">CoE</span></div>
+          <div class="sc-stat"><div class="sc-stat-n">20<span style="font-size:16px;color:var(--text-dim)">+</span></div><div class="sc-stat-l">Solutions Designed</div></div>
+        </div>
+
+        <div class="slide-card">
+          <div class="accent-bar" style="background:var(--green)"></div>
+          <div class="sc-category">Business Analysis</div>
+          <span class="sc-icon">📋</span>
+          <div class="sc-title">Requirements Gathering as BA</div>
+          <div class="sc-body">Gathered and formalised 20+ process requirements as Business Analyst — stakeholder workshops, AS-IS / TO-BE process mapping, feasibility assessments, and UAT coordination.</div>
+          <div class="sc-tags"><span class="sc-tag">Requirements</span><span class="sc-tag">Process Mapping</span><span class="sc-tag">UAT</span><span class="sc-tag">Stakeholder Mgmt</span></div>
+          <div class="sc-stat"><div class="sc-stat-n">20<span style="font-size:16px;color:var(--text-dim)">+</span></div><div class="sc-stat-l">Requirements Gathered</div></div>
+        </div>
+
+        <div class="slide-card">
+          <div class="accent-bar" style="background:var(--purple)"></div>
+          <div class="sc-category">Gen AI</div>
+          <span class="sc-icon">✨</span>
+          <div class="sc-title">Gen AI & OpenAI Integration</div>
+          <div class="sc-body">Connects UiPath workflows with OpenAI and ChatGPT APIs. Uses Gen AI Connector in DU pipelines with AI Trust Layer for enterprise-grade confidential processing and zero PII leakage.</div>
+          <div class="sc-tags"><span class="sc-tag">OpenAI</span><span class="sc-tag">ChatGPT</span><span class="sc-tag">AI Trust Layer</span><span class="sc-tag">Gen AI Connector</span></div>
+          <div class="sc-stat"><div class="sc-stat-n">0</div><div class="sc-stat-l">PII Leakage Incidents</div></div>
+        </div>
+
+        <div class="slide-card">
+          <div class="accent-bar" style="background:var(--amber)"></div>
+          <div class="sc-category">UiPath Apps</div>
+          <span class="sc-icon">📱</span>
+          <div class="sc-title">UiPath Apps & Action Apps</div>
+          <div class="sc-body">Builds human-in-the-loop review dashboards and business user interfaces using UiPath Apps and Action Apps — enabling non-technical stakeholders to validate, approve, or override bot decisions.</div>
+          <div class="sc-tags"><span class="sc-tag">UiPath Apps</span><span class="sc-tag">Action Apps</span><span class="sc-tag">Action Center</span><span class="sc-tag">HITL</span></div>
+          <div class="sc-stat"><div class="sc-stat-n">40<span style="font-size:16px;color:var(--text-dim)">%</span></div><div class="sc-stat-l">Less Exception Handling</div></div>
+        </div>
+
+        <div class="slide-card">
+          <div class="accent-bar" style="background:var(--green)"></div>
+          <div class="sc-category">Impact</div>
+          <span class="sc-icon">📈</span>
+          <div class="sc-title">Measurable Business Impact</div>
+          <div class="sc-body">Every automation project delivers quantified ROI — from processing time reduction and FTE savings to error rate elimination and compliance improvement across banking, HR, and finance.</div>
+          <div class="sc-tags"><span class="sc-tag">ROI</span><span class="sc-tag">Banking</span><span class="sc-tag">HR</span><span class="sc-tag">Finance</span><span class="sc-tag">Insurance</span></div>
+          <div class="sc-stat"><div class="sc-stat-n">1500<span style="font-size:16px;color:var(--text-dim)">+</span></div><div class="sc-stat-l">FTE Hours / Month</div></div>
+        </div>
+
+        <div class="slide-card">
+          <div class="accent-bar" style="background:var(--red)"></div>
+          <div class="sc-category">Integrations</div>
+          <span class="sc-icon">🔌</span>
+          <div class="sc-title">Enterprise System Integrations</div>
+          <div class="sc-body">Connects bots with Salesforce, SharePoint, Office 365, Active Directory, and custom REST APIs using PowerShell and Postman-tested endpoints for reliable, production-safe integrations.</div>
+          <div class="sc-tags"><span class="sc-tag">Salesforce</span><span class="sc-tag">SharePoint</span><span class="sc-tag">O365</span><span class="sc-tag">REST API</span><span class="sc-tag">AD</span></div>
+          <div class="sc-stat"><div class="sc-stat-n">10<span style="font-size:16px;color:var(--text-dim)">+</span></div><div class="sc-stat-l">Systems Integrated</div></div>
+        </div>
+
+      </div>
+    </div>
+    <div class="slide-progress"><div class="slide-progress-fill" id="slideProgress"></div></div>
+    <div class="slide-nav">
+      <button class="slide-arrow" id="slidePrev">←</button>
+      <div class="slide-dots" id="slideDots"></div>
+      <button class="slide-arrow" id="slideNext">→</button>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="connect-wrap">
+    <div class="sec-label reveal">// Contact</div>
+    <div class="connect-inner">
+      <div class="reveal">
+        <div class="sec-title">Let's Build Something Intelligent</div>
+        <p class="connect-left" style="color:var(--text-dim);line-height:1.9;margin-bottom:28px;font-size:14px">Looking to build an RPA Center of Excellence, automate a complex business process, or bring on a UiPath expert with Agentic AI and Gen AI experience? I'm ready to help.</p>
+        <div class="c-links">
+          <a href="mailto:rajsandeep1998@gmail.com" class="c-link"><span class="c-ico">✉</span>rajsandeep1998@gmail.com</a>
+          <a href="https://linkedin.com/in/sandeepraj" class="c-link" target="_blank"><span class="c-ico">in</span>linkedin.com/in/sandeepraj</a>
+          <a href="tel:+91XXXXXXXXXX" class="c-link"><span class="c-ico">📞</span>+91-XXXXXXXXXX</a>
+          <a href="#" class="c-link"><span class="c-ico">📍</span>India — Open to Remote</a>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="qf-card">
+          <div class="qf-head">// Quick Facts</div>
+          <div class="qf-row"><span class="qf-k">Availability</span><span class="qf-v avail">Immediate</span></div>
+          <div class="qf-row"><span class="qf-k">Work Type</span><span class="qf-v">Full-time · Contract · Remote</span></div>
+          <div class="qf-row"><span class="qf-k">Notice Period</span><span class="qf-v">30 Days</span></div>
+          <div class="qf-row"><span class="qf-k">Preferred Role</span><span class="qf-v">Sr. RPA / Lead / Architect</span></div>
+          <div class="qf-row"><span class="qf-k">Location</span><span class="qf-v">India · Worldwide Remote</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-copy">© 2026 <em>Sandeep Raj</em> · Senior RPA & Automation Engineer</div>
+  <div class="footer-note">50+ Processes · 20+ Solutions · 1,500+ FTE hrs saved · 3× UiPath Certified</div>
+</footer>
+
+<script>
+/* THEME */
+const themeBtn = document.getElementById('themeBtn');
+themeBtn.addEventListener('click', () => {
+  const dark = document.documentElement.dataset.theme === 'dark';
+  document.documentElement.dataset.theme = dark ? 'light' : 'dark';
+  themeBtn.textContent = dark ? '☀️' : '🌙';
+});
+
+/* REVEAL */
+const obs = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) { setTimeout(() => e.target.classList.add('vis'), i * 60); obs.unobserve(e.target); }
+  });
+}, { threshold: 0.06 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+/* SLIDESHOW */
+(function(){
+  const track   = document.getElementById('slideTrack');
+  const dotsEl  = document.getElementById('slideDots');
+  const prog    = document.getElementById('slideProgress');
+  const btnPrev = document.getElementById('slidePrev');
+  const btnNext = document.getElementById('slideNext');
+
+  const cards   = track.querySelectorAll('.slide-card');
+  const total   = cards.length;
+  let current   = 0;
+  let autoTimer, isDragging = false, dragStart = 0, dragDelta = 0;
+
+  // card width + gap (px) — computed at runtime
+  function cardW() {
+    const c = cards[0];
+    const gap = 20;
+    return c.offsetWidth + gap;
+  }
+
+  function getVisible() {
+    const vw = track.parentElement.offsetWidth;
+    return Math.max(1, Math.floor((vw + 20) / (340 + 20)));
+  }
+
+  function maxIndex() { return Math.max(0, total - getVisible()); }
+
+  // Build dots
+  function buildDots() {
+    dotsEl.innerHTML = '';
+    const steps = maxIndex() + 1;
+    for (let i = 0; i < steps; i++) {
+      const d = document.createElement('div');
+      d.className = 'dot' + (i === current ? ' active' : '');
+      d.addEventListener('click', () => goTo(i));
+      dotsEl.appendChild(d);
+    }
+  }
+
+  function updateUI() {
+    const cw = cardW();
+    track.style.transform = `translateX(-${current * cw + dragDelta}px)`;
+    const pct = maxIndex() === 0 ? 100 : (current / maxIndex()) * 100;
+    prog.style.width = pct + '%';
+    dotsEl.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === current));
+  }
+
+  function goTo(idx) {
+    current = Math.max(0, Math.min(idx, maxIndex()));
+    dragDelta = 0;
+    updateUI();
+  }
+
+  btnPrev.addEventListener('click', () => { goTo(current - 1); resetAuto(); });
+  btnNext.addEventListener('click', () => { goTo(current + 1); resetAuto(); });
+
+  // Touch/drag
+  function onDragStart(e) {
+    isDragging = true;
+    dragStart = e.type === 'touchstart' ? e.touches[0].clientX : e.clientX;
+    track.style.transition = 'none';
+  }
+  function onDragMove(e) {
+    if (!isDragging) return;
+    const x = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
+    dragDelta = -(x - dragStart);
+    updateUI();
+  }
+  function onDragEnd() {
+    if (!isDragging) return;
+    isDragging = false;
+    track.style.transition = '';
+    if (Math.abs(dragDelta) > 60) goTo(dragDelta > 0 ? current + 1 : current - 1);
+    else { dragDelta = 0; updateUI(); }
+    resetAuto();
+  }
+  track.addEventListener('mousedown',  onDragStart);
+  track.addEventListener('touchstart', onDragStart, { passive: true });
+  window.addEventListener('mousemove', onDragMove);
+  window.addEventListener('touchmove', onDragMove, { passive: true });
+  window.addEventListener('mouseup',   onDragEnd);
+  window.addEventListener('touchend',  onDragEnd);
+
+  // Auto-advance
+  function startAuto() { autoTimer = setInterval(() => goTo(current >= maxIndex() ? 0 : current + 1), 3500); }
+  function resetAuto()  { clearInterval(autoTimer); startAuto(); }
+
+  // Keyboard
+  document.addEventListener('keydown', e => {
+    const inSlide = document.getElementById('slideshow').getBoundingClientRect();
+    if (inSlide.top < window.innerHeight && inSlide.bottom > 0) {
+      if (e.key === 'ArrowLeft')  { goTo(current - 1); resetAuto(); }
+      if (e.key === 'ArrowRight') { goTo(current + 1); resetAuto(); }
+    }
+  });
+
+  window.addEventListener('resize', () => { buildDots(); goTo(Math.min(current, maxIndex())); });
+
+  buildDots();
+  goTo(0);
+  startAuto();
+})();
+</script>
+</body>
+</html>
